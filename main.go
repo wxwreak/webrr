@@ -168,7 +168,6 @@ func main() {
 	finalUrl := *target
 	lowerUrl := strings.ToLower(finalUrl)
 	if !strings.HasPrefix(lowerUrl, "http://") && !strings.HasPrefix(lowerUrl, "https://") {
-		finalUrl = "https://" + finalUrl
 
 		if strings.Contains(lowerUrl, "localhost") ||
 			strings.Contains(lowerUrl, "127.0.0.1") ||
@@ -178,9 +177,9 @@ func main() {
 			strings.HasPrefix(lowerUrl, "172.16.") ||
 			strings.HasPrefix(lowerUrl, "172.17.") ||
 			strings.HasPrefix(lowerUrl, "172.31.1") {
-			lowerUrl = "http://" + lowerUrl
+			finalUrl = "http://" + finalUrl
 		} else {
-			lowerUrl = "https://" + lowerUrl
+			finalUrl = "https://" + finalUrl
 		}
 	}
 
